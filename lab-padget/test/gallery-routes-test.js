@@ -13,12 +13,12 @@ const url = `http://localhost:${process.env.PORT}`;
 const exampleUser = {
   username: 'exampleuser',
   password: '1234',
-  email: 'exampleuser@test.com'
+  email: 'exampleuser@test.com',
 };
 
 const exampleGallery = {
   name: 'test gallery',
-  desc: 'test gallery description'
+  desc: 'test gallery description',
 };
 
 mongoose.Promise = Promise;
@@ -27,10 +27,10 @@ describe('Gallery Routes', function() {
   afterEach( done => {
     Promise.all([
       User.remove({}),
-      Gallery.remove({})
+      Gallery.remove({}),
     ])
     .then(() => done())
-    .catch(() => done())
+    .catch(() => done());
   });
 
   describe('POST: /api/gallery', () => {
@@ -54,7 +54,7 @@ describe('Gallery Routes', function() {
       request.post(`${url}/api/gallery`)
       .send(exampleGallery)
       .set({
-        Authorization: `Bearer ${this.tempToken}`
+        Authorization: `Bearer ${this.tempToken}`,
       })
       .end((err, res) => {
         if (err) return done(err);
@@ -101,14 +101,14 @@ describe('Gallery Routes', function() {
     it('should return a gallery', done => {
       request.get(`${url}/api/gallery/${this.tempGallery._id}`)
       .set({
-        Authorization: `Bearer ${this.tempToken}`
+        Authorization: `Bearer ${this.tempToken}`,
       })
       .end((err, res) => {
         if (err) return done(err);
         let date = new Date(res.body.created).toString();
         expect(res.body.name).to.equal(exampleGallery.name);
         expect(res.body.desc).to.equal(exampleGallery.desc);
-        expect(res.body.userId).to.equal(this.tempUser._id.toString())
+        expect(res.body.userId).to.equal(this.tempUser._id.toString());
         expect(date).to.not.equal('Invalid Date');
         done();
       });
