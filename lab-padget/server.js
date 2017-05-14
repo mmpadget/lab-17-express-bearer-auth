@@ -13,6 +13,8 @@ const galleryRoutes = require('./routes/gallery-routes');
 const bodyParser = require('body-parser').json();
 const mongoose = require('mongoose');
 
+// TODO: To test server file we need to use module.exports = express = app.
+// const app = module.exports = express();
 const app = express();
 const router = express.Router();
 const PORT = process.env.PORT || 3000;
@@ -26,5 +28,6 @@ app.use(cors());
 app.use(bodyParser);
 app.use('/api', authRoutes(router));
 app.use('/api', galleryRoutes(router));
+// must add a picture route here or you'll get express errors.
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

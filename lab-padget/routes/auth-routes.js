@@ -32,3 +32,11 @@ module.exports = function(router) {
   });
   return router;
 };
+
+// TODO: /api/resource-name/:id
+// GET request
+// pass the id of a resource though the url endpoint to req.params to fetch a resource
+// TODO: PUT request
+// pass data as stringified json in the body of a put request to update a resource
+// TODO: DELETE request
+// pass the id of a resource though the url endpoint to req.params to delete a resource

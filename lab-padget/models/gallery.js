@@ -1,5 +1,7 @@
 'use strict';
 
+// Post, get, and delete for new gallery.
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
